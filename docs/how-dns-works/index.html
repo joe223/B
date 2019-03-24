@@ -75,8 +75,22 @@ github.com.		505	IN	NS	ns-1283.awsdns-32.org.
 						<h2>SOA - Start of authority</h2>
 					</section>
 					<section>
-						<h2>继续看看github.com的SOA</h2>
+						<h3>SOA master file content example</h3>
 						<pre><code>
+domain.com.  IN SOA ns1.domain.com. admin.domain.com. (
+					12083   ; serial number
+					3h      ; refresh interval
+					30m     ; retry interval
+					3w      ; expiry period
+					1h      ; negative TTL
+)
+						</code></pre>
+					</section>
+					<section>
+						<h2>看看github.com的SOA记录</h2>
+						<pre><code>
+joe:note/ (master) $ dig github.com soa
+
 ;; ANSWER SECTION:
 github.com.		3600	IN	SOA	ns1.p16.dynect.net. hostmaster.github.com. 1553204324 3600 600 604800 60
 						</code></pre>
@@ -114,7 +128,7 @@ github.com.		3600	IN	SOA	ns1.p16.dynect.net. hostmaster.github.com. 1553204324 3
 					</section>
 					<section>
 						<h3>n ≈ 14.45</h3>
-						<h3 class="fragment fade-in">Bill Manning: "我们给未来留一点回旋的余地吧"</h3>
+						<h3 class="fragment fade-in">Bill Manning: "我们给未来留一点回旋的余地。"</h3>
 					</section>
 				</section>
 				<section>
