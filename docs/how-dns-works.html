@@ -111,7 +111,28 @@ github.com.		3600	IN	SOA	ns1.p16.dynect.net. hostmaster.github.com. 1553204324 3
 					<section>
 						<h2>为什么只有13台根域名服务器?</h2>
 					</section>
+					<section>
+						<h3>先看一下DNS响应数据</h3>
+						<pre><code>
+;; QUESTION SECTION:
+;.              IN  NS
+
+;; ANSWER SECTION:
+.           518400  IN  NS  a.root-servers.net.
+.           518400  IN  NS  b.root-servers.net.
+
+...
+
+;; ADDITIONAL SECTION:
+a.root-servers.net. 3600000 IN  A   198.41.0.4
+b.root-servers.net. 3600000 IN  A   192.228.79.201
+
+...
+						</code></pre>
+					</section>
 					<section data-markdown>
+						### 再说几个关键数字
+
 						- [576 bytes - MTU](https://tools.ietf.org/html/rfc791#section-3.1)
 						- [512 bytes - UDP payload](https://tools.ietf.org/html/rfc1035#section-4.2.1)
 						- [12 bytes - DNS message Header](https://tools.ietf.org/html/rfc1035#section-4.1.1)
@@ -121,6 +142,8 @@ github.com.		3600	IN	SOA	ns1.p16.dynect.net. hostmaster.github.com. 1553204324 3
 						- [16 bytes - DNS message Question with compression](https://tools.ietf.org/html/rfc1035#section-4.1.4)
 					</section>
 					<section data-markdown>
+						### 我们有如下计算
+
 						```
 							512 - 12 - 5 = 31 + 15n + 16m
 							m = n + 1
